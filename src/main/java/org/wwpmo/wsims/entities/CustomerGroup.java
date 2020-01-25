@@ -14,6 +14,9 @@ public class CustomerGroup implements SuperEntity {
     private int customerGroupSeq;
 
     @Column(length = 30,nullable = false,unique = true)
+    private String customerGroupNo;
+
+    @Column(length = 30,nullable = false,unique = true)
     private String customerGroupName;
 
     @Column(length = 100)
@@ -94,6 +97,14 @@ public class CustomerGroup implements SuperEntity {
 
     public void setUpdatedDate(LocalDateTime updatedDate) {
         UpdatedDate = updatedDate;
+    }
+
+    public String getCustomerGroupNo() {
+        return customerGroupNo;
+    }
+
+    public void setCustomerGroupNo(String customerGroupNo) {
+        this.customerGroupNo = customerGroupNo;
     }
 
     public CustomerGroup(String customerGroupName, String description, String isActive, String createdBy, String updatedBy, LocalDateTime createdDate, LocalDateTime updatedDate) {

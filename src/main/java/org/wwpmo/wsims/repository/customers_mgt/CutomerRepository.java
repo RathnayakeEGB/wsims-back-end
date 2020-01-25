@@ -15,6 +15,6 @@ public interface CutomerRepository extends JpaRepository<Customer ,Integer> {
     int countAllByCustomerReqNo(String reqNo);
     int  countAllByStatus(String status);
     int countAllByGroupId_CustomerGroupName(String name);
-    
+
 }
 
