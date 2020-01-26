@@ -1,4 +1,4 @@
-package org.wwpmo.wsims.service;
+package org.wwpmo.wsims.service.impl;
 
 import java.util.Collection;
 import java.util.List;

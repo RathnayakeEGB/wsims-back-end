@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.wwpmo.wsims.entities.menu.Menu3;
 import org.wwpmo.wsims.models.ResponseObject;
-import org.wwpmo.wsims.service.MenuManagementService;
+import org.wwpmo.wsims.service.impl.MenuManagementService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

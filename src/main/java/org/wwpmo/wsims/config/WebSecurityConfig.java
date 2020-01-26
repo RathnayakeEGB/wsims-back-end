@@ -13,7 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.wwpmo.wsims.service.UserDetailsServiceImpl;
+import org.wwpmo.wsims.service.impl.UserDetailsServiceImpl;
 
 //import com.bezkoder.springjwt.security.jwt.AuthEntryPointJwt;
 //import com.bezkoder.springjwt.security.jwt.AuthTokenFilter;

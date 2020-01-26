@@ -25,8 +25,8 @@ import org.wwpmo.wsims.models.login.MessageResponse;
 import org.wwpmo.wsims.models.login.SignupRequest;
 import org.wwpmo.wsims.repository.RoleRepository;
 import org.wwpmo.wsims.repository.UserRepository;
-import org.wwpmo.wsims.service.UserDetailsImpl;
-import org.wwpmo.wsims.service.UserDetailsServiceImpl;
+import org.wwpmo.wsims.service.impl.UserDetailsImpl;
+import org.wwpmo.wsims.service.impl.UserDetailsServiceImpl;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)

@@ -12,6 +12,8 @@ import org.wwpmo.wsims.entities.CustomerGroup;
 import org.wwpmo.wsims.models.ResponseObject;
 import org.wwpmo.wsims.service.CustomerGroupManagementService;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/cus_group_mgt")
@@ -41,4 +43,29 @@ public class CustomerGroupsController {
         }
     }
 
+    @GetMapping(value = "/getAllCustomerGroups",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllCustomerGroups(){
+
+        log.debug("[___________Get All Customer Groups.....");
+        try {
+            List<CustomerGroup> list = managementService.getAllCustomerGroup();
+            return  new ResponseEntity<>(list,HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.debug(e.getMessage());
+            return null;
+        }
+    }
+
+    @PutMapping(value = "/updateCustomerGroupInfo",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?>updateCustomerGroupInfo(@RequestBody CustomerGroup group){
+        log.debug("[____Update Information...............");
+        try {
+            ResponseObject rs = managementService.updateCustomerGroup(group);
+            return new ResponseEntity<>(rs,HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(new ResponseObject(500,"Error"),HttpStatus.OK);
+        }
+    }
 }

@@ -5,10 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.wwpmo.wsims.entities.CustomerGroup;
 import org.wwpmo.wsims.models.ResponseObject;
 import org.wwpmo.wsims.repository.customers_mgt.CustomerGoupRepository;
 import org.wwpmo.wsims.service.CustomerGroupManagementService;
+import org.wwpmo.wsims.service.UniqueNumberService;
+import org.wwpmo.wsims.utils.SEARCH_IDS;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,6 +24,9 @@ public class CustomerGroupManagementServiceImpl implements CustomerGroupManageme
 
     @Autowired
     private CustomerGoupRepository goupRepository;
+
+    @Autowired
+    private UniqueNumberService uniqueNumberService;
 
     public List<CustomerGroup>getAllCustomerGroupStaus(String statu) throws Exception{
         log.debug("[_____Get All Customer Group By Status....");
@@ -64,6 +70,7 @@ public class CustomerGroupManagementServiceImpl implements CustomerGroupManageme
         }
         group.setCreatedDate(LocalDateTime.now());
         goupRepository.save(group);
+        uniqueNumberService.getUpdateNext(SEARCH_IDS.CUSTOMERGROUP.getValue());
         return new ResponseObject(200,"OK");
     }
 
@@ -74,8 +81,10 @@ public class CustomerGroupManagementServiceImpl implements CustomerGroupManageme
     }
 
     @Override
-    public ResponseObject updateCustomerGroup(CustomerGroup group) throws Exception {
+    public ResponseObject updateCustomerGroup(@RequestBody CustomerGroup group) throws Exception {
         log.debug("[_____Update Customer Group....");
+
+        System.out.println("XXX" +group);
 
         if(group.getIsActive().isEmpty()){
             log.debug("[_____Property IsActive Is Too Large..");
@@ -106,10 +115,11 @@ public class CustomerGroupManagementServiceImpl implements CustomerGroupManageme
         }
 
         CustomerGroup g = goupRepository.findAllByCustomerGroupName(group.getCustomerGroupName());
-        g.setUpdatedBy(g.getCreatedBy());
+        g.setUpdatedBy(group.getCreatedBy());
         g.setUpdatedDate(LocalDateTime.now());
         g.setDescription(group.getDescription());
         g.setIsActive(group.getIsActive());
+        g.setCustomerGroupName(group.getCustomerGroupName());
 
         return new ResponseObject(200,"OK");
 

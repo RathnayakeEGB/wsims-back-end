@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.*;
-import org.wwpmo.wsims.service.UserDetailsImpl;
+import org.wwpmo.wsims.service.impl.UserDetailsImpl;
 
 @Component
 public class JwtUtils {
