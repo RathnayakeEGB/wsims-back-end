@@ -8,13 +8,14 @@ import org.wwpmo.wsims.entities.Customer;
 import java.util.List;
 
 @Repository
-public interface CutomerRepository extends JpaRepository<Customer ,Integer> {
+public interface CustomerRepository extends JpaRepository<Customer ,Integer> {
 
     Customer findByCustomerReqNo(String regNo);
     List<Customer> findAllByStatus(String status);
     int countAllByCustomerReqNo(String reqNo);
     int  countAllByStatus(String status);
     int countAllByGroupId_CustomerGroupName(String name);
-
+    boolean existsByCustomerReqNo(String regNo);
+    boolean existsByEmail(String email);
 }
 

@@ -16,7 +16,7 @@ public class CustomerGroup implements SuperEntity {
     @Column(length = 30,nullable = false,unique = true)
     private String customerGroupNo;
 
-    @Column(length = 30,nullable = false,unique = true)
+    @Column(length = 30,nullable = false)
     private String customerGroupName;
 
     @Column(length = 100)

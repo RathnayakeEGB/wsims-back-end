@@ -69,6 +69,8 @@ public class Customer implements SuperEntity{
 
     private LocalDateTime UpdatedDate;
 
+    private byte[] image;
+
     @JoinColumn(name = "groupId",referencedColumnName = "customerGroupSeq")
     @ManyToOne
     private CustomerGroup groupId;
@@ -281,5 +283,13 @@ public class Customer implements SuperEntity{
                 ", UpdatedDate=" + UpdatedDate +
                 ", groupId=" + groupId +
                 '}';
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

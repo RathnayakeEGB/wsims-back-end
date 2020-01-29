@@ -21,6 +21,7 @@ public interface CustomerManagementService {
 
     int customersCoutGetByStatus(String status)throws Exception;
 
+    boolean isCustomerExist(String customerName)throws Exception;
 
-
+    boolean isEmailUsed(String email)throws Exception;
 }

@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface CustomerGoupRepository extends JpaRepository<CustomerGroup,Integer> {
 
-    CustomerGroup findAllByCustomerGroupName(String groupName);
+    CustomerGroup findByCustomerGroupNo(String no);
     List<CustomerGroup>findAllByIsActive(String  isActive);
     int countAllByIsActive(String active);
     boolean existsByCustomerGroupName(String name);

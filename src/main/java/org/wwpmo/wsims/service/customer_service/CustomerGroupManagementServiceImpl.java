@@ -28,16 +28,17 @@ public class CustomerGroupManagementServiceImpl implements CustomerGroupManageme
     @Autowired
     private UniqueNumberService uniqueNumberService;
 
+    @Override
     public List<CustomerGroup>getAllCustomerGroupStaus(String statu) throws Exception{
         log.debug("[_____Get All Customer Group By Status....");
       return   goupRepository.findAllByIsActive(statu);
     }
-
+    @Override
     public List<CustomerGroup>getAllCustomerGroup() throws Exception{
         log.debug("[_____Get All Customer Groups....");
         return goupRepository.findAll();
     }
-
+    @Override
     public ResponseObject createdNewCustomerGroup(CustomerGroup group) throws Exception{
         log.debug("[_____Create New Customer Group....");
 
@@ -81,7 +82,7 @@ public class CustomerGroupManagementServiceImpl implements CustomerGroupManageme
     }
 
     @Override
-    public ResponseObject updateCustomerGroup(@RequestBody CustomerGroup group) throws Exception {
+    public ResponseObject updateCustomerGroup( CustomerGroup group) throws Exception {
         log.debug("[_____Update Customer Group....");
 
         System.out.println("XXX" +group);
@@ -114,13 +115,18 @@ public class CustomerGroupManagementServiceImpl implements CustomerGroupManageme
             }
         }
 
-        CustomerGroup g = goupRepository.findAllByCustomerGroupName(group.getCustomerGroupName());
+        CustomerGroup g = goupRepository.findByCustomerGroupNo(group.getCustomerGroupNo());
+
+        System.out.println("???" +g);
+        System.out.println("??kk?" +group);
+
+
+        g.setCustomerGroupNo(group.getCustomerGroupNo());
         g.setUpdatedBy(group.getCreatedBy());
         g.setUpdatedDate(LocalDateTime.now());
         g.setDescription(group.getDescription());
         g.setIsActive(group.getIsActive());
         g.setCustomerGroupName(group.getCustomerGroupName());
-
         return new ResponseObject(200,"OK");
 
 
